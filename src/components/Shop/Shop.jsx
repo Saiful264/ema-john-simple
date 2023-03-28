@@ -5,17 +5,31 @@ import Product from '../Product/Product';
 import './Shop.css'
 
 const Shop = () => {
-    const [products, setproducts] = useState([]);
+    const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
     useEffect(()=> {
         fetch('products.json')
-        .then(res => res.json()).then(data => setproducts(data))
+        .then(res => res.json()).then(data => setProducts(data))
     }, []);
 
     useEffect(()=>{
         const storedCart = getShoppingCart();
-        console.log(storedCart);
-    },[])
+        const saveCart= [];
+        // step 1: get the id
+        for (const id in storedCart) {
+            // step 2: get the product using product id
+            const addedProduct = products.find(product => product.id === id);
+            if(addedProduct){
+                // step 3 add quantity
+                const quantity = storedCart[id];
+                addedProduct.quantity = quantity;
+                // step 4: add the added product to the save cart
+                saveCart.push(addedProduct)
+            }
+        }
+        // step 5: set the cart
+        setCart(saveCart);
+    },[products])
 
     const handleAddToCart = (product) =>{
         const newCart = [...cart, product];
