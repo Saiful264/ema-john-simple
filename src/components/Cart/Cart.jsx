@@ -9,8 +9,14 @@ const Cart = ({cart}) => {
     let totalShiping = 0;
     let quantity = 0;
     for (const product of cart) {
-        total = total + product.price;
+        // if(product.quantity === 0){
+        //     product.quantity = 1;
+        // }
+        // product.quantity == product.quantity || 1;
+
+        total = total + product.price * product.quantity;
         totalShiping = totalShiping + product.shipping;
+        quantity = quantity + product.quantity
     }
     
     const tex = total*7/100;
@@ -20,7 +26,7 @@ const Cart = ({cart}) => {
     return (
         <div className='cart'>
              <h4>Order Summery</h4>
-                <p>Selecet Items: {cart.length}</p>
+                <p>Selecet Items: {quantity}</p>
                 <p>Total Price: ${total}</p>
                 <p>Total Shipping Charge: $ {totalShiping.toFixed(2)}</p>
                 <p>Tax: ${tex}</p>
