@@ -4,7 +4,7 @@ const Cart = ({cart}) => {
     // const cart = props.cart; //option 1
     // const {cart} = props; // option 2
 
-    console.log(cart);
+    // console.log(cart);
     let total = 0;
     let totalShiping = 0;
     let quantity = 0;
