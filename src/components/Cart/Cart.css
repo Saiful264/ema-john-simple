@@ -9,3 +9,14 @@
     -ms-border-radius: 8px;
     -o-border-radius: 8px;
 }
+.btn-clear-cart{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FF3030;
+    margin: 10px auto;
+    color: white;
+    font-size: 21px;
+    height: 56px;
+    align-items: center;
+}
